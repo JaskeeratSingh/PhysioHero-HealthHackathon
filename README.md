@@ -1,4 +1,4 @@
-# PhysioGuide-HealthHackathon
+# PhysioHero-HealthHackathon
 Using an implementation of PoseNet in Tensorflow.js enabling anyone with access to the internet to treat themselves.
 My project allows a patient to treat themselves or any other person to assist the patient as a physiotherapist while also recieving feedback on how well they were doing.
 
