@@ -20,3 +20,5 @@ same posture or exercise and gets a score that indicates how well he/she's doing
 I am using PoseNet to obtain keypoints. By comparing respective keypoints by a euclidian distance difference algorithm and an affine transform, I obtain the similarity of two poses, giving it a accuracy percentage score.
 
 This score allows the user to understand how well he is doing, and at the same time give feedback to the computer whether an exercise was too difficult. This will then result in the computer suggesting an easier exercise or pointing out where the mistake was. Finding the accuracy of a pose does not give us information about where the mistake was or where the exercise had not been completed to effective perfection, hence I came up with a distance difference algorithm where from a key point, distances are measured according to ratio of heights, and subtracted respectively and added. In an ideal case each difference would be equal to zero and the sum would also total zero. However since we are comparing the difference of respecive points from a common ground, We can say that the difference furthese from zero must be the site of error.
+
+![](GistAlgorithm.jpg)
