@@ -9,12 +9,14 @@ let locked = false;
 let overBox = false;
 let hasStarted = false;
 let count = 0;
-let score = 84;
-let label = score + '%';
+let score = 0;
 let poseI;
 let posess = [];
 let show = false;
 let threshold = 0.2;
+let acc;
+
+let sum = 0;
 
 const thigh1 = document.getElementById('thighs1');
 const thigh2 = document.getElementById('thighs2');
@@ -73,25 +75,32 @@ function draw() {
             // with an posesay every time new poses are detected
             poseNet.on('pose', function (results) {
                 poses = results;
-                console.log(poses);
+                //console.log(poses);
+                //Figure out what exercises will work and how to check how well the user does
+                //Analyze performance and recommend other activities
             });
             // Hide the video element, and just show the canvas
             video.hide();
         }else{
             if(show){
-                drawKeypoints(posess);
+                drawKeypoints(posess)
                 drawSkeleton(posess);
             }else{
+                if(posess.length>0 && poses.length>0){
+                    for(let i = 0; i<17; i++){
+                       sum = sum + (poses[0].pose.keypoints[i].position.y - posess[0].pose.keypoints[i].position.y);
+                        //The difference algorithm as explained in gihub readme
+                    }
+                    acc = map(sum, 0, 1800, 100, 0);//Getting accuracy score
+                    console.log(acc);
+                    sum = 0;
+                    score = acc;
+                    
+                }
                 image(video, 0, 0, width, height);
                 fill(0);
                 textSize(32);
-                text(label, 10, height-20);
-
-
-                //Figure out what exercises will work and how to check how well the user does
-                //Analyze performance and recommend other activities
-                
-                
+                text(score, 10, height-20);
 
                 // We can call both functions to draw all keypoints and the skeletons
                 drawKeypoints(poses);
@@ -243,7 +252,7 @@ function back(){
     hasStarted = true;
     loop();
     back2.style.visibility = 'visible';
-    setTimeout(detectPoseB, 1000);
+    setTimeout(detectPoseB, 700);
 }
 
 //-------------Single Pose For Comparison-----------//
