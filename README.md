@@ -14,3 +14,5 @@ It is utmost that the unnecessary price be removed.
 
 PhysioGuide provides an ideal exercise for the treatment of pain in any region of the body and compares how the user performs the 
 same posture or exercise and gets a score that indicates how well he/she's doing.
+
+![](GoodStretch.jpg)
